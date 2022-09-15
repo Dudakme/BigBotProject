@@ -13,12 +13,12 @@ export default class Event<T extends keyof ClientEvents> {
   constructor(
     public name: T,
     public once: Boolean,
-    private toCallback: (i: T) => void,
+    private toCallback: (...args: ClientEvents[T]) => void,
     private toSave: Boolean
   ) {}
 
-  public execute(i: T): void {
-    this.toCallback(i);
+  public execute(...args: ClientEvents[T]): void {
+    this.toCallback(...args);
     this.toSave ? console.log("to save") : console.log("not to save");
   }
 }
