@@ -1,7 +1,5 @@
-import { ClientEvents } from 'discord.js'
-import Event from '../Structures/Event'
+import Event from '../Structures/Event/Event'
 
-const EventName: string = "ready"
 
 export default new Event("ready", true, i => {
     console.clear()
