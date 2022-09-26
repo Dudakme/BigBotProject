@@ -1,7 +1,7 @@
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord.js";
 
-import { clientId, guildId, token } from "../../config.json";
+import { clientId, guildId, token } from "../../JSON/config.json";
 
 import Command from "./Command";
 import MyClient from "../ExtendedClient";
