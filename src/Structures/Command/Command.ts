@@ -17,6 +17,6 @@ export default class Command {
 
   public execute(interaction: CommandInteraction): void {
     this.toCallback(interaction);
-    this.toSave ? console.log("to save") : console.log("not to save");
+    // this.toSave ? console.log("to save") : console.log("not to save");
   }
 }

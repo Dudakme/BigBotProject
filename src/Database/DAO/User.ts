@@ -49,7 +49,7 @@ export default class UserManager {
 
   static async setUserMoney(userId: string, Money: number) {
     try {
-      await UserManager.user.updateOne({ _id: userId }, { Coin: Money });
+      await UserManager.user.updateOne({ _id: userId }, { Coins: Money });
       return true;
     } catch {
       return false;

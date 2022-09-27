@@ -19,6 +19,6 @@ export default class Event<T extends keyof ClientEvents> {
 
   public execute(...args: ClientEvents[T]): void {
     this.toCallback(...args);
-    this.toSave ? console.log("to save") : console.log("not to save");
+    // this.toSave ? console.log("to save") : console.log("not to save");
   }
 }
