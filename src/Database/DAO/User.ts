@@ -3,7 +3,7 @@ import User from "../model/User";
 export default class UserManager {
   private static user = User;
 
-  static async registerUserData(userData: typeof User): Promise<Boolean> {
+  static async registerUserData(userData: { _id: String, job: String, }): Promise<Boolean> {
     try {
         new User(userData).save();
         return true;

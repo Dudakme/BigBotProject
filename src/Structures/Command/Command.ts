@@ -10,7 +10,7 @@ export default class Command {
    */
 
   constructor(
-    public data: SlashCommandBuilder,
+    public data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">,
     private toCallback: (interaction: CommandInteraction) => void,
     private toSave: Boolean
   ) {}

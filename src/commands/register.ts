@@ -1,5 +1,5 @@
 import Command from "../Structures/Command/Command";
-import UserManager from '../Database/DAO/User'
+import UserManager from "../Database/DAO/User";
 import { SlashCommandBuilder } from "discord.js";
 
 export default new Command(
@@ -8,23 +8,21 @@ export default new Command(
     .setDescription("Registers yourself to this bot"),
 
   async (interaction) => {
-    if (await UserManager.userExist(interaction.user.id)) {
-      await interaction.reply('yuh already 가입됨')
-      return
-  }
+    const { channel, user } = interaction;
 
-  await interaction.reply('가입 시퀀스 시작')
-  let filter = (m: any) => m.author.id === interaction.user.id;
-  const collector = interaction.channel.createMessageCollector({filter, max: 1, time: 15000});
+    if (!channel) return;
 
-  collector.on('collect', async res => {
+    if (await UserManager.userExist(user.id) > 0) {
+      await interaction.reply("yuh already 가입됨");
+      return;
+    }
 
-      await UserManager.registerUserData({_id: interaction.user.id, name: res})
-      // @ts-ignore
-      await interaction.channel.send('유저 가입 완료');
-      collector.stop();
+    await interaction.reply({ content: "가입 됨"});
 
-  });
+    await UserManager.registerUserData({
+      _id: user.id,
+      job: "null",
+    });
   },
   false
 );
