@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     Coins: {
         type: Number,
         required: true,
-        default: 10
+        default: 100
     },
     inventory: {
         type: Array,
